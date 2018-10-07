@@ -2,16 +2,17 @@ import React from 'react';
 import ShoppingItem from "./ShoppingItem";
 import PropTypes from 'prop-types';
 
-class ShoppingList extends React.Component {
+if (process.env.NODE_ENV !== 'production') {
+  const {whyDidYouUpdate} = require('why-did-you-update')
+  whyDidYouUpdate(React)
+}
+
+class ShoppingList extends React.PureComponent {
 
   static propTypes = {
     items: PropTypes.array,
     name: PropTypes.string
   }
-  shouldComponentUpdate(nextProps, nextState) {
-    return nextProps.items !== this.props.items;
-  }
-
     render() {
       return (
         <div className="shopping-list">
